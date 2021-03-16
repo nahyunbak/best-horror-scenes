@@ -37,6 +37,38 @@
         
       }
 
+    *hover 강조효과 
+    예시: 
+    &:hover {
+            opacity: 0.5;
+        }
+
+    *transition: 마우스 올리면 바뀜
+    참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/transition
+    예시: 
+    transition: opacity 0.3s linear;
+
+    *z-index: 값
+    참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+    설명: 값이 높을수록 앞에 온다. 
+
+    *모든 direct children을 선택하되, .footer만 제외하고 
+    &> *:not(.footer) {
+        padding: 0px 140px;
+    }
+
+    *모든 children을 선택하되, .footer만 제외하고 
+    & *:not(.footer) {
+        padding: 0px 140px;
+    }
+
+    *1vh란? 
+    화면의 1%만큼의 길이라는 뜻. 
+    상대값이 좋음.
+    절댓값을 쓰는 경우는, 사진의 비율 등을 맞추기 위해. 
+
+
+
 */
 * {
     box-sizing: border-box;
@@ -50,9 +82,12 @@ a {
 }
 .paint-box {
     font-family: "Caladea";
-    padding: 0px 140px;
     padding-top: 70px;
+    &> *:not(.footer) {
+        padding: 0px $sideSpace;
+    }
 }
+
 
 .paint-box header {
     display: block;
@@ -60,7 +95,7 @@ a {
     width: 100%;
     top: 0;
     left: 0;
-    padding: 0px 140px;
+    padding: 0px $sideSpace;
     background-color: white;
     height: 70px;
     font-family: "Montserrat";
@@ -94,6 +129,7 @@ a {
     justify-content: center;
     color: white;
     margin-bottom: 80px;
+    margin: 0px $sideSpace;
     h4 {
         @extend %miniTitle;
         margin-bottom: 30px;
@@ -206,7 +242,44 @@ a {
       img {
         max-width: 100%;
         height: 100%;
-        
+        transition: opacity 0.3s linear;
+        &:hover {
+            opacity: 0.5;
+        }
       }
     }
   }
+
+
+.paint-box .footer {
+    margin-top: 100px;
+    background-color: $bg;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 65px 0px; 
+    .footer__column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @extend %miniTitle ;
+        .column__title {
+            margin-bottom: 50px;
+            opacity: 0.5;
+        }
+        ul {
+            text-align: center;
+            li {
+                margin-bottom: 15px;
+            }
+        }
+        &:nth-child(2) {
+            border-right: 1px solid black;
+            border-left: 1px solid black;
+
+        }
+    }
+}
+
+
+
+
