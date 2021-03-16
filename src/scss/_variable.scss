@@ -1,3 +1,18 @@
+/* besthorror */
 $red: #e7473c;
 $white: #f0eff0;
 $fixedWidth: 33%;
+
+/* paint-box */
+$bg : #f3ede8;
+%miniTitle {
+    font-family: "Montserrat";
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+};
+
+%tinyTitle {
+    margin-bottom: 30px;
+};
+

@@ -1,0 +1,212 @@
+@import "_variable.scss";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Caladea:400&display=swap");
+
+/*
+    글씨 줄간 넓히는 법
+    1)flexbox
+    2)margin
+    3)줄간격 주기  - line-height: 1.2
+
+    절반으로 나뉘어 있는 그리드 비슷한 것
+    1. 부모 요소에 
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 60vh);
+}
+    2. 자식 요소에 
+    .blog__post {
+        background-color: $bg;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        &:nth-child(even) {
+            img {
+                order: 1;
+            }
+        }
+
+    *엇박자 표현할 때 --  order: 1;
+
+    *오류가 생기면 침착하게 터미널을 체크하자. 
+
+    * 이미지를 꽉 차게 하고 싶다면? 
+    img {
+        max-width: 100%;
+        height: 100%;
+        
+      }
+
+*/
+* {
+    box-sizing: border-box;
+    
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    @extend %miniTitle;
+}
+.paint-box {
+    font-family: "Caladea";
+    padding: 0px 140px;
+    padding-top: 70px;
+}
+
+.paint-box header {
+    display: block;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 0px 140px;
+    background-color: white;
+    height: 70px;
+    font-family: "Montserrat";
+    font-weight: 500;
+    nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        ul {
+            display: flex;
+            text-transform: uppercase;
+            font-size: 10px;
+            &:first-child {
+                li {
+                    margin-right: 20px;
+                    @extend %miniTitle;
+                }
+            }
+        }
+    }
+}
+
+.hero {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)), url(https://filmdaily.co/wp-content/uploads/2020/08/sexandthecity-lede-1300x935.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin-bottom: 80px;
+    h4 {
+        @extend %miniTitle;
+        margin-bottom: 30px;
+    }
+    h3 {
+        font-size: 48px;
+        width: 50%;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    a {
+        width:10%;
+        background-color: white;
+        padding: 25px 0px;
+        text-align: center;
+        text-decoration: none;
+        color: black;
+        @extend %miniTitle;
+        font-size: 10px;
+        transition: color 0.3s linear, background 0.3 linear;
+        &:hover {
+            background-color: grey;
+            color: white;
+        };
+    }
+}
+
+.under-hero {
+    height: 80vh;
+    display: flex;
+    width: 100%;
+    margin-bottom: 80px;
+    .under-hero__content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: $bg;
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            h4 {
+                @extend %tinyTitle;
+                margin-bottom: 30px;
+            }
+            h3 {
+                font-size: 36px;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            a {
+                border: 1px solid black;
+                padding: 20px;
+            }
+        }
+    }
+
+    img, div {
+        width: 50%;
+    }
+}
+
+.blog {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 60vh);
+    margin-bottom: 50px;
+    .blog__post {
+        background-color: $bg;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        &:nth-child(even) {
+            img {
+                order: 1;
+            }
+        }
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .post__content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .post__date {
+                @extend %miniTitle;
+                margin-bottom: 70px;
+            }
+            h4 {
+                font-size:32px;
+                margin-bottom: 40px;
+            }
+        }
+    }
+}
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 410px);
+    .gallery__poster {
+      height: 100%;
+      cursor: pointer;
+      img {
+        max-width: 100%;
+        height: 100%;
+        
+      }
+    }
+  }

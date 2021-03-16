@@ -6,19 +6,47 @@
     참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
     설명: 자식에게 설정하며, 부모 컨테이너를 넘어가지 않는다는 의미이다. 
 
-    letter-spacing / line-height / text-transform: uppercase / 
-    position: fixed; (이걸 하면 굳이 height:를 어마무시하게 설정할 필요 없다)
+    letter-spacing: 5px 
+    참고서:  https://developer.mozilla.org/en-US/docs/Web/CSS/letter-spacing
+    설명: 자간 넓이를 설정한다.
+
+    line-height: 1.2
+    참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/line-height
+    설명: 줄간 넓이를 설정한다. 
+    
+    text-transform: uppercase 
+    참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform
+    설명: 대문자나 소문자, 앞글자만 대문자 등으로 바꿔준다.
+
+    position: fixed   &  margin-left: 40px
+    참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/position
+    설명: 왼쪽 사이드바를 고정시키고, 본문에는 마진을 준다. 
+    이걸 하면 굳이 height:를 어마무시하게 설정할 필요 없다)
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.1) 5%,
+        transparent,
+        transparent,
+        transparent,
+        transparent
+    참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient()
+    설명: 그리디언트 효과를 준다.
+
+    cursor: pointer
+    참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+    설명: 커서를 설정한다. 
 */
 * {
     box-sizing: border-box;
 }
 
-body {
+.besthorror {
     height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: $white;
 }
-header{
+.besthorror header{
     position: fixed;
     top: 0;
     left: 0;
@@ -75,7 +103,7 @@ header{
     }
 }
 
-main {
+.besthorror main {
     height: 5000vh;
     background: linear-gradient(
         to bottom,

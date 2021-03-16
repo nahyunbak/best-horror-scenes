@@ -19,6 +19,7 @@ const routes = {
     dest: "build"
   },
   img: {
+    watch: "src/**/*",
     src: "src/img/**/*",
     dest: "build/img"
   },
