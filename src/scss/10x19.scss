@@ -1,0 +1,149 @@
+/*
+    밑에서 움직이게 하는 거<<이게 진짜로 어려운 거다! 
+
+    *autofit: 반응형디자인. 
+    부모 요소에 
+    display: grid;
+    grid-template-columns: 1.5fr 2fr 1.5fr;
+    grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+
+    *border 을 주는 두 가지 방법
+    1) border값을 준다.
+    2) background-color와 gap값을 동시에 준다.
+    
+    *자식요소에게 주는 grid column값이 음수다?
+    grid-column-start: -2;
+    == 뒤에서 두번째 열(||)부터 시작이다. 
+
+    *1vh란.
+    화면을 100으로 나눴을 때 1%에 해당 
+
+    *자식 요소에 공통적으로 속성을 주고 싶을 때.
+    & > * {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $brown;
+    }
+
+    *안 쓰는 요소지만, 레이아웃을 위해 span을 임시로 채워넣을 수도 있다.
+
+    *복잡한 구조의 경우,grid를 두 번 쓰는 것도 방법이다. 
+
+    *각 grid의 영역 최대로 늘리기
+    부모 요소에 
+    align-items: stretch;
+
+    *hover 했을 때 값이 동시에 바뀌는 경우
+    (이게 상식적인 게, 문자색이 흰색인데 배경도 흰색으로 바뀌어봐..
+    transition: color .3s linear, background-color 0.3 linear;
+    &:hover {
+                background-color: $brown;
+                color: white;
+            }
+
+    *span은 이를테면 영역으로 치부되는 것이라, div처럼 처음과 끝을 지정할 필요 없이 시작점만 써주면 된다. 
+
+    *line-break: strict;
+    참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/line-break
+    설명: 줄바꿈 규칙이 엄격하다. 
+
+    *white-space: nowrap;
+    참고서: https://developer.mozilla.org/en-US/docs/Web/CSS/white-space
+    설명: 공백을 축소하지만 소스 내에서 줄바꿈을 억제한다.
+    
+    *문자 양 옆이 잘린 듯한 효과를 주고 싶다면
+    .scrolling__text{
+        grid-column-start:2;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    *local에 있는 배경화면을 가져오고 싶다면 (상위 폴더 2개를 거쳐야 한다는 소리임)
+    .center-image {
+        grid-column: 2/-2;
+        grid-row: -2/2;
+        background-image: url('../../build/img/10x19/main.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    *배경화면을 grid 등에 맞추고 싶다면
+    해당 이미지에 
+    background-size: cover;
+    background-position: 
+
+
+
+*/
+
+.grids {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100vh;
+    background-color: $brown;
+    display: grid;
+    grid-template-columns: 1.5fr 1.9fr 1.5fr;
+    grid-template-rows: 1fr 5fr 1fr;
+    gap: 1px;
+    & > * {
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $brown;
+        font-size: 22px;
+        text-transform: uppercase;
+
+    }
+    .menu {
+        grid-column-start: -2;
+    }
+    .center-image {
+        grid-column: 2/-2;
+        grid-row: -2/2;
+        background-image: url('../../build/img/10x19/main.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    .number__row {
+        background-color: $brown;        
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1px;
+        height: 100%;
+        align-items: stretch;
+
+        .number{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            cursor: pointer;
+            transition: color .3s linear, background-color 0.3 linear;
+            &:hover {
+                background-color: $brown;
+                color: white;
+            }
+        }
+        
+    }
+    .scrolling__text{
+        grid-column-start:2;
+        white-space: nowrap;
+        overflow: hidden;
+        span {
+            animation: scrollText 5s linear;
+        }
+    }
+}
+
+@keyframes scrollText {
+    from {
+        transform: translateX(-100px);
+    }
+    to {
+        transform: translateX(0)
+    }
+}
+
